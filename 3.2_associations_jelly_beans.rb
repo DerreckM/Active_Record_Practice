@@ -1,15 +1,26 @@
 require_relative 'setup'
 ActiveRecord::Schema.define do
   self.verbose = false
-
   # MIGRATIONS
   # <-- your work goes here
-end
+  create_table :jelly_beans do |t|
+    t.string :color, default: "orange"
+    t.integer :jar_id
+  end
 
+  create_table :jars do |t|
+    t.string :jelly_beans
+  end
+end
 # MODELS
 # <-- your work goes here
+class JellyBean < ActiveRecord::Base
+  belongs_to :jar
+end
 
-
+class Jar < ActiveRecord::Base
+  has_many :jelly_beans
+end
 # TESTS
 class JellyBeansTest < Minitest::Test
   def test_jelly_beans_have_a_color

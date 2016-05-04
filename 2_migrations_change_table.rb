@@ -36,7 +36,14 @@ ActiveRecord::Schema.define do
     values ('backpack', 23, 0, 4),
            ('lunchbox', 0,  1,  3);
   "
-
+  change_table :items do |t|
+    t.text :description, default: ''
+    t.rename :how_many, :quantity
+    t.change_default :quantity, 1
+    t.rename :sold_out, :in_stock
+    t.change_default :in_stock, true
+    t.remove :seller_id
+  end
   # <-- Your work goes here!
 end
 

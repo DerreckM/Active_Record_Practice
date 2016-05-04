@@ -9,6 +9,18 @@ ActiveRecord::Schema.define do
   end
 
   # <-- Your work goes here!
+  create_table :events do |t|
+    t.string :title, null: false
+    t.string :location
+    t.text :description, default: 'n/a'
+    t.integer :max_attendees
+    t.timestamp :created_at
+    t.timestamp :updated_at
+    t.datetime :when
+    t.float :rating
+    t.boolean :public, default: true
+  end
+
 end
 
 

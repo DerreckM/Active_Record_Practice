@@ -4,11 +4,36 @@ ActiveRecord::Schema.define do
 
   # MIGRATIONS
   # <-- your work goes here
+  create_table :leafs do |t|
+    t.boolean :diseased, default: false
+    t.string :tree_id
+  end
+
+  create_table :trees do |t|
+    t.string :leaves
+  end
+
+  create_table :leafes do |t|
+
+  end
+
 end
 
 
 # MODELS
 # <-- your work goes here
+class Leaf < ActiveRecord::Base
+  belongs_to :tree
+end
+
+class Tree < ActiveRecord::Base
+  has_many :leafs
+  has_many :leaves
+end
+
+class Leafe < ActiveRecord::Base
+
+end
 
 # FIX THE INFLECTION
 ActiveSupport::Inflector.inflections do |inflect|
