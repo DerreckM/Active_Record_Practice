@@ -41,10 +41,13 @@ ActiveRecord::Schema.define do
     t.rename :how_many, :quantity
     t.change_default :quantity, 1
     t.rename :sold_out, :in_stock
-    t.change_default :in_stock, true
+    t.change_default :in_stock, :true
     t.remove :seller_id
   end
   # <-- Your work goes here!
+  execute "
+  UPDATE items SET in_stock = not(in_stock);
+  "
 end
 
 
