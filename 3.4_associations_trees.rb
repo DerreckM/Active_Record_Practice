@@ -11,10 +11,7 @@ ActiveRecord::Schema.define do
 
   create_table :trees do |t|
     t.string :leaves
-  end
-
-  create_table :leafes do |t|
-
+    t.string :Leafe
   end
 
 end
@@ -27,13 +24,9 @@ class Leaf < ActiveRecord::Base
 end
 
 class Tree < ActiveRecord::Base
-  has_many :leafs
   has_many :leaves
 end
 
-class Leafe < ActiveRecord::Base
-
-end
 
 # FIX THE INFLECTION
 ActiveSupport::Inflector.inflections do |inflect|

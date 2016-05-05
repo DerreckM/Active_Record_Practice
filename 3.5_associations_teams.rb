@@ -4,12 +4,36 @@ ActiveRecord::Schema.define do
 
   # MIGRATIONS
   # <-- your work goes here
+  create_table :teams do |t|
+    t.string :name
+  end
+
+  create_table :players do |t|
+    t.string :name
+    t.float :batting_average, default: 0
+    t.string :team_id
+  end
+
+  create_table :fans do |t|
+    t.string :name
+  end
 end
 
 
 # MODELS
 # <-- your work goes here
+class Team < ActiveRecord::Base
+  has_many :players
+  has_many :fans
+end
 
+class Player < ActiveRecord::Base
+  belongs_to :team
+end
+
+class Fan < ActiveRecord::Base
+  belongs_to :team
+end
 
 # TESTS
 class TeamsTest < Minitest::Test

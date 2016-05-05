@@ -6,6 +6,8 @@ ActiveRecord::Schema.define do
   # <-- your work goes here
   create_table :users do |t|
     t.string :name
+    t.integer :post_id
+    t.integer :comment_id
   end
 
   create_table :posts do |t|
